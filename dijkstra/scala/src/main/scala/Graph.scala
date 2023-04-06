@@ -1,5 +1,6 @@
 trait Graph {
   def vertices: Seq[String]
+  def edges: Seq[(String, Int, String)]
 }
 
 class AdjGraph(
@@ -7,6 +8,10 @@ class AdjGraph(
 ) extends  Graph {
   def vertices: Seq[String] = {
     data.keys.toSeq.sorted
+  }
+
+  def edges: Seq[(String, Int, String)] = {
+    data.flatMap(from => from._2.map(to => (from._1, to._2, to._1))).toSeq
   }
 }
 

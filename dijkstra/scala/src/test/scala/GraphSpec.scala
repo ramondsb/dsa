@@ -7,7 +7,10 @@ class GraphSpec extends AnyFlatSpec with Matchers {
     "AdjGraph" should "returns an ordered sequence of all vertices" in {
         graph.vertices shouldBe Seq("a", "b", "c")
     }
-    // TODO: graph.edges shouldBe Seq[(String, Int, String)]
+    
+    it should "returns a ordered sequence of its edges" in {
+        graph.edges should contain theSameElementsAs Seq(("b", 2, "c"), ("a", 1, "b"))
+    }
     // TODO: graph.vertice("a").neigbours shouldBe Seq["b"]
     // TODO: Add edge
     // TODO: Remove edge
