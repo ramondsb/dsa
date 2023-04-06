@@ -12,7 +12,12 @@ class GraphSpec extends AnyFlatSpec with Matchers {
         graph.edges should contain theSameElementsAs Seq(("b", 2, "c"), ("a", 1, "b"))
     }
 
-    // TODO: graph.vertice("a").neigbours shouldBe Seq["b"]
+    it should "return a sequence of neighbours" in {
+        graph.neighbours("a") should contain theSameElementsAs Seq("b")
+        graph.neighbours("c") should contain theSameElementsAs Seq()
+        an [IllegalArgumentException] should be thrownBy graph.neighbours("z")
+    }
+
     // TODO: Add edge
     // TODO: Remove edge
 }
